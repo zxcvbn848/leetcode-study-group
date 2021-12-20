@@ -1,39 +1,85 @@
 # to be sorted
-stringsArray = [
+stringsList = [
     'apply',
     'balance',
     'count',
     'drop',
 ]
 # sort all strings
-stringsArray = [
+""" stringsList = [
     'alppy',
     'aabceln',
     'cnotu',
     'dopr',
-]
+] """
 # sort array by strings
-stringsArray = [
+""" stringsList = [
     'aabceln',
     'alppy',
     'cnotu',
     'dopr',
-]
+] """
 
-# TODO:
-def mergeSort(toBeSorted):
+def mergeSort(list):
+    # 分割：到每列表只剩 1 元素為止
+    if len(list) > 1:
+        mid = len(list) // 2
+        left_list = list[:mid] # 0 ~ mid - 1 => Left
+        right_list = list[mid:] # mid ~ end => Right
+
+        mergeSort(left_list)
+        mergeSort(right_list)
+
+        # 整合
+        right_index = 0
+        left_index = 0
+        merged_index = 0
+        # 從兩列表的第一項開始比較大小，依序往後比較
+        while right_index < len(right_list) and left_index < len(left_list):
+            # 較小的數值先放入最終的合併列表中
+            if right_list[right_index] < left_list[left_index]:
+                list[merged_index] = right_list[right_index]
+                # 被放入的數值的列表的 index 往後一位
+                right_index = right_index + 1
+            else:
+                list[merged_index] = left_list[left_index]
+                left_index = left_index + 1
+            # 合併列表的 index 往後一位
+            merged_index = merged_index + 1
+
+        # 放入右列表剩餘項
+        while right_index < len(right_list):
+            list[merged_index] = right_list[right_index]
+            right_index = right_index + 1
+            merged_index = merged_index + 1
+
+        # 放入左列表剩餘項
+        while left_index < len(left_list):
+            list[merged_index] = left_list[left_index]
+            left_index = left_index + 1
+            merged_index = merged_index + 1
+
+def mergeSortWithDifferentType(toBeSorted):
     varType = type(toBeSorted)
-    if varType == 'str':
-        # mergeSort String
-        return
-    elif varType == 'list':
-        # 先兩兩比較 string 後再排序
-        return
+    # 排序字串
+    if varType == str:
+        toBeSorted = list(toBeSorted)
+        mergeSort(toBeSorted)
+        toBeSorted = "".join(toBeSorted)
+    # 排序列表，先兩兩比較 string 後再排序
+    elif varType == list:
+        mergeSort(toBeSorted)
+    return toBeSorted
 
-def sortStringsInArray(stringsArray):
-    for string in stringsArray:
-        mergeSort(string)
-    # TODO:
-    mergeSort(stringsArray)
+
+def sortStringsInList(stringsList):
+    for string in stringsList:
+        stringIndex = stringsList.index(string)
+        stringsList[stringIndex] = mergeSortWithDifferentType(string)
+
+    mergeSort(stringsList)
+
+    return stringsList
     
-sortStringsInArray(stringsArray)
+result = sortStringsInList(stringsList)
+print(result)
