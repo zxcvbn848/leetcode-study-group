@@ -70,13 +70,15 @@ class sorting:
         # 排序列表，先兩兩比較 string 後再排序
         elif varType == list:
             sorting.mergeSort(toBeSorted)
+        else:
+            return
+
         return toBeSorted
 
 
 def sortStringsInList(stringsList):
-    for string in stringsList:
-        stringIndex = stringsList.index(string)
-        stringsList[stringIndex] = sorting.mergeSortWithDifferentType(string)
+    for i in range(len(stringsList)):
+        stringsList[i] = sorting.mergeSortWithDifferentType(stringsList[i])
 
     sorting.mergeSort(stringsList)
 
