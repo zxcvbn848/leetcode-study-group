@@ -75,7 +75,6 @@ class sorting:
 
         return toBeSorted
 
-
 def sortStringsInList(stringsList):
     for i in range(len(stringsList)):
         stringsList[i] = sorting.mergeSortWithDifferentType(stringsList[i])
