@@ -81,7 +81,7 @@ def sortStringsInList(stringsList):
         stringsList[i] = sorting.mergeSortWithDifferentType(stringsList[i])
 
     # 排序全部列表中的字串(按照字母順序)
-    sorting.mergeSort(stringsList)
+    sorting.mergeSortWithDifferentType(stringsList)
 
     return stringsList
     
