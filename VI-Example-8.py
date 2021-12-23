@@ -78,10 +78,12 @@ class sorting:
         return toBeSorted
 
 def sortStringsInList(stringsList):
+    # 排序全部字串中字母
     for i in range(len(stringsList)):
         stringsList[i] = sorting.mergeSortWithDifferentType(stringsList[i])
 
-    sorting.mergeSort(stringsList)
+    # 排序全部列表中的字串(按照字母順序)
+    sorting.mergeSortWithDifferentType(stringsList)
 
     return stringsList
     
