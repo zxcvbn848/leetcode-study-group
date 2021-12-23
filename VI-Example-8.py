@@ -4,6 +4,8 @@ stringsList = [
     'drop',
     'count',
     'balance',
+    'want',
+    'warn',
 ]
 # sort all strings
 """ stringsList = [
