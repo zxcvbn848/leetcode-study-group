@@ -33,7 +33,9 @@ class Matrix:
 
 matrix = [
    [1, 2, 3, 4],
-   [0, 0, 7, 8],
+   [0, 1, 7, 8],
+   [1, 1, 0, 8],
+   [1, 1, 7, 8],
 ]
 result = Matrix.setZeros(matrix)
 print(result)

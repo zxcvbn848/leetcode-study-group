@@ -22,7 +22,6 @@ class Matrix:
             if matrix[i][j] == 0:
                matrix[i][0] = 0
                matrix[0][j] = 0
-               print(matrix)
 
       # Nullify rows based on values in first column
       for i in range(1, len(matrix)):
@@ -31,7 +30,7 @@ class Matrix:
 
       # Nullify columns based on values in first row
       for j in range(1, len(matrix[0])):
-         if matrix[0][j]:
+         if matrix[0][j] == 0:
             Matrix.nullifyColumn(matrix, j)
 
       # Nullify first row
@@ -54,7 +53,9 @@ class Matrix:
 
 matrix = [
    [1, 2, 3, 4],
-   [0, 0, 7, 8],
+   [0, 1, 7, 8],
+   [1, 1, 0, 8],
+   [1, 1, 7, 8],
 ]
 result = Matrix.setZeros(matrix)
 print(result)
