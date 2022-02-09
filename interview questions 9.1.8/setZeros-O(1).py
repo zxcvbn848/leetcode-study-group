@@ -57,5 +57,14 @@ matrix = [
    [1, 1, 0, 8],
    [1, 1, 7, 8],
 ]
+"""
+result:
+[
+   [0, 2, 0, 4],
+   [0, 0, 0, 0],
+   [0, 0, 0, 0],
+   [0, 1, 0, 8]
+]
+"""
 result = Matrix.setZeros(matrix)
 print(result)
