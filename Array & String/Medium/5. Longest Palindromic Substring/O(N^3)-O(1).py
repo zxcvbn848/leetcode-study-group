@@ -29,3 +29,6 @@ class Solution:
 string = "abccbaaaa"
 result = Solution().longestPalindrome(string)
 print(result)
+
+# Time Complexity: O(N^3)
+# Space Complexity: O(1)
