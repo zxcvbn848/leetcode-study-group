@@ -1,5 +1,6 @@
 # Manacher's algorithm
 # https://en.wikipedia.org/wiki/Longest_palindromic_substring#Manacher's_algorithm
+# https://www.zhihu.com/question/37289584
 
 class Solution:
    def longestPalindrome(self, s: str) -> str:
@@ -17,7 +18,7 @@ class Solution:
       for i in range(1, len(S) - 1): # range(1, len(S) - 1)：因為 S 的第一個字元是 ^，最後一個字元是 $
          # 如果 i < right，P[i] 為 P[center] 的子回文
          if i < right:
-            P[i] = min(right - i, P[2 * center - i])
+            P[i] = min(right - i, P[2 * center - i]) # i_mirror = center - (i - center)
 
          # 檢查以 i 為中心點，在左右邊界 P[i] + 1 內是否為回文
          while S[i + P[i] + 1] == S[i - P[i] - 1]:
@@ -29,7 +30,7 @@ class Solution:
             center, right = i, i + P[i]
 
       # 最長回文的半徑與中心點索引
-      p, idx = max((v, i) for i, v in enumerate(P))
+      p, idx = max((v, i) for i, v in enumerate(P)) # max((v, i)) -> 先比較 v，若一樣再比較 i
 
       return s[ (idx - p) // 2 : (idx + p) // 2 ] # // 2 是為了將 # 排除在外
 
