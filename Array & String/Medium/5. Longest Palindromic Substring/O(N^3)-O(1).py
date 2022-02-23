@@ -1,4 +1,5 @@
 # Brute Force
+# https://algodaily.com/challenges/longest-palindromic-substring/brute-force
 
 class Solution:
     # @param {string} s input string
