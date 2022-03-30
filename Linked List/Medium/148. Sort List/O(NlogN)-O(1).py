@@ -19,6 +19,9 @@ class Solution(object):
 		:rtype: ListNode
 		"""
 
+		if not head or not head.next:
+			return head
+
 		n = self.getSize(head)
 
 		# create a dummy node before `head`
