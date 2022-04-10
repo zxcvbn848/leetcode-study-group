@@ -10,23 +10,6 @@ class LinkedList:
       self.head = None
       self.tail = None
 
-   @staticmethod
-   def printList(node):
-      while node:
-         print(node.data, end = " ")
-         node = node.next
-
-   @staticmethod
-   def linkNodes(nodes):
-      head = ListNode(nodes[0])
-      ptr = head
-
-      for node in nodes[1:]:
-         ptr.next = ListNode(node)
-         ptr = ptr.next
-
-      return head
-
    def getSize(self):
       ptr = self.head
       size = 0
