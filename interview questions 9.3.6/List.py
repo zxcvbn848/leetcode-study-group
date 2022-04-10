@@ -1,49 +1,4 @@
-class ListNode:
-   def __init__(self, data):
-      self.data = data
-      self.next = None
-
-class LinkedList:
-   def __init__(self):
-      self.head = None
-      self.tail = None
-
-   def getSize(self):
-      ptr = self.head
-      size = 0
-
-      while ptr:
-         size += 1
-         ptr = ptr.next
-
-      return size
-
-   def append(self, data):
-      newNode = ListNode(data)
-
-      if not self.head:
-         self.head = newNode
-         self.tail = newNode
-      else:
-         self.tail.next = newNode
-         self.tail = self.tail.next
-
-   def deleteFirstNode(self):
-      if not self.head:
-         return
-
-      # 1. if head is not null, create a temp node pointing to head
-      deleteNode = temp = self.head
-
-      # 2. move head to next of head
-      self.head = self.head.next
-
-      #3. delete temp node
-      temp = None
-
-      return deleteNode
-
-class Animal: # (metaclass=abc.ABCMeta)
+class Animal:
    def __init__(self, name):
       self.order = 0
       self.name = name
@@ -62,8 +17,8 @@ class Animal: # (metaclass=abc.ABCMeta)
 
 class AnimalShelter:
    def __init__(self):
-      self.dogs = LinkedList()
-      self.cats = LinkedList()
+      self.dogs = []
+      self.cats = []
       self.order = 0
 
    def enqueue(self, animal):
@@ -78,13 +33,13 @@ class AnimalShelter:
 
    def dequeueAny(self):
       # Look at tops of dog and cat queues, and pop the queue with the oldest value.
-      if self.dogs.getSize() == 0:
+      if len(self.dogs) == 0:
          return self.dequeueCats()
-      elif self.cats.getSize() == 0:
+      elif len(self.cats) == 0:
          return self.dequeueDogs()
 
-      dog = self.dogs.head.data
-      cat = self.cats.head.data
+      dog = self.dogs[0]
+      cat = self.cats[0]
 
       if dog.isOlderThan(cat):
          return self.dequeueDogs()
@@ -92,27 +47,21 @@ class AnimalShelter:
          return self.dequeueCats()
 
    def dequeueDogs(self):
-      return self.dogs.deleteFirstNode()
+      return self.dogs.pop(0)
 
    def dequeueCats(self):
-      return self.cats.deleteFirstNode()
+      return self.cats.pop(0)
 
    def printQueue(self):
-      dogPtr = self.dogs.head
-
       print("Dogs: ", end = "\n")
 
-      while dogPtr:
-         print("name: ", dogPtr.data.name, " order: ", dogPtr.data.order)
-         dogPtr = dogPtr.next
-
-      catPtr = self.cats.head
+      for dog in self.dogs:
+         print("name: ", dog.name, " order: ", dog.order)
 
       print("Cats: ", end = "\n")
 
-      while catPtr:
-         print("name: ", catPtr.data.name, " order: ", catPtr.data.order)
-         catPtr = catPtr.next
+      for cat in self.cats:
+         print("name: ", cat.name, " order: ", cat.order)
 
 class Dog(Animal):
    def __init__(self, name):
@@ -142,8 +91,8 @@ for animal in animals:
 print("=====before=====")
 animalShelter.printQueue()
 print("=====before=====")
-animalShelter.dequeueAny()
-animalShelter.dequeueDogs()
+# animalShelter.dequeueAny()
+# animalShelter.dequeueDogs()
 animalShelter.dequeueCats()
 print("=====after=====")
 animalShelter.printQueue()
