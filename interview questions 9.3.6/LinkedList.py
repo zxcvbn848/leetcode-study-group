@@ -11,6 +11,22 @@ class LinkedList:
       self.tail = None
 
    @staticmethod
+   def printList(node):
+      while node:
+         print(node.data, end = " ")
+         node = node.next
+
+   @staticmethod
+   def linkNodes(nodes):
+      head = ListNode(nodes[0])
+      ptr = head
+
+      for node in nodes[1:]:
+         ptr.next = ListNode(node)
+         ptr = ptr.next
+
+      return head
+
    def getSize(self):
       ptr = self.head
       size = 0
@@ -46,6 +62,7 @@ class LinkedList:
       
       return deleteNode
 
+class Animal: # (metaclass=abc.ABCMeta)
    def __init__(self, name):
       self.order = 0
       self.name = name
@@ -150,3 +167,9 @@ animalShelter.dequeueCats()
 print("=====after=====")
 animalShelter.printQueue()
 print("=====after=====")
+
+# ==================== Test =====================
+# dogNodes = ['a', 'b', 'c', 'd']
+# dogs = LinkedList().linkNodes(dogNodes)
+# LinkedList.printList(dogs)
+# print(LinkedList.getSize(dogs))
