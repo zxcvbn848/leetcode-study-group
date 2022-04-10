@@ -3,11 +3,9 @@ class Animal:
       self.order = 0
       self.name = name
 
-   # @abc.abstractmethod
    def setOrder(self, ord):
       self.order = ord
 
-   # @abc.abstractmethod
    def getOrder(self):
       return self.order
 
