@@ -89,15 +89,3 @@ class Solution {
         return $this->sum; // finally return the $sum accumulated till now which will be $sum of value of $deepest leaves
     }
 }
-
-$root1 = [1,2,3,4,5,null,6,7,null,null,null,null,8];
-$root2 =  [6,7,8,2,7,1,3,9,null,1,4,null,null,null,5];
-
-var_export((new Solution())->sum);
-
-// $result1 = (new Solution())->deepestLeavesSum($root1);
-// $result2 = (new Solution())->deepestLeavesSum($root2);
-
-// var_export($result1);
-// echo PHP_EOL;
-// var_export($result2);
